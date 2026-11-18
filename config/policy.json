@@ -1,0 +1,10 @@
+{
+  "denied_hosts": ["10.0.0.5"],
+  "allowed_server_tcp_ports": [5000],
+  "auth_fail_threshold": 3,
+  "auth_fail_window_s": 60,
+  "block_duration_s": 60,
+  "heavy_user_mbps": 6.0,
+  "monitor_interval_s": 1.0,
+  "flow_idle_timeout_s": 30
+}
