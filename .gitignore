@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+logs/
+storage/
+downloads/
+data/
+results/quick/
+results_root/
+config/users.json
+*.part
