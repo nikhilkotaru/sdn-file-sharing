@@ -1,0 +1,3 @@
+# Mininet + Open vSwitch come from apt (see scripts/setup_ubuntu.sh)
+os-ken            # SDN controller framework (or: ryu)
+matplotlib        # charts in experiments/plot_results.py (optional)
