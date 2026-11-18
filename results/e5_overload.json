@@ -1,0 +1,40 @@
+[
+  {
+    "n": 10,
+    "ok": 3,
+    "aggregate_mbps": 5.122,
+    "avg_completion_s": 7.305,
+    "max_completion_s": 9.808,
+    "per_client_mbps": [
+      2.174,
+      3.822,
+      1.711
+    ],
+    "jain_fairness": 0.889,
+    "reconnects": 0,
+    "busy": 7,
+    "client_retries": 0
+  },
+  {
+    "n": 10,
+    "ok": 9,
+    "aggregate_mbps": 8.249,
+    "avg_completion_s": 8.788,
+    "max_completion_s": 18.087,
+    "per_client_mbps": [
+      4.665,
+      2.338,
+      1.014,
+      5.925,
+      2.039,
+      0.928,
+      1.39,
+      2.828,
+      3.634
+    ],
+    "jain_fairness": 0.744,
+    "reconnects": 40,
+    "busy": 41,
+    "client_retries": 8
+  }
+]

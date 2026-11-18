@@ -1,0 +1,212 @@
+[
+  {
+    "test": "ping with valid credentials",
+    "passed": true,
+    "result": {
+      "ok": true,
+      "command": "ping",
+      "client": "10.0.0.1",
+      "user": "alice",
+      "status": "OK",
+      "pong": true,
+      "active_sessions": 1,
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.228,
+      "host": "h1"
+    }
+  },
+  {
+    "test": "wrong password rejected",
+    "passed": true,
+    "result": {
+      "ok": false,
+      "command": "ping",
+      "client": "10.0.0.2",
+      "user": "bob",
+      "error": "authentication failed",
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.173,
+      "host": "h2"
+    }
+  },
+  {
+    "test": "upload 1MB (alice)",
+    "passed": true,
+    "result": {
+      "ok": true,
+      "command": "upload",
+      "client": "10.0.0.1",
+      "user": "alice",
+      "op": "upload",
+      "file": "func_1MB.bin",
+      "bytes": 1048576,
+      "start": 1795012119.471702,
+      "end": 1795012121.8205907,
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 2.356,
+      "host": "h1"
+    }
+  },
+  {
+    "test": "list shows uploaded file",
+    "passed": true,
+    "result": {
+      "ok": true,
+      "command": "list",
+      "client": "10.0.0.2",
+      "user": "bob",
+      "files": [
+        {
+          "name": "README.md",
+          "size": 13078,
+          "sha256": "85ed04c7d7f851486ac423b479d8f5093f5eacae35c596735e4237a05414da50",
+          "owner": "alice",
+          "uploaded_by": "alice",
+          "uploaded_at": "2026-11-18 19:39:13",
+          "version": 1,
+          "downloads": 1
+        },
+        {
+          "name": "bench_5MB.bin",
+          "size": 5242880,
+          "sha256": "c1e2fc4e5dddc404e582841a684babbf77277e8a25bd00c0cdd011cbeb1f2271",
+          "owner": "admin",
+          "uploaded_by": "admin",
+          "uploaded_at": "2026-11-18 19:58:38",
+          "version": 1,
+          "downloads": 0
+        },
+        {
+          "name": "big.bin",
+          "size": 20971520,
+          "sha256": "4a38ff6f6afdbaeac4c2a87ff41c840ae635b5066d24df729823ad0572b3a129",
+          "owner": "alice",
+          "uploaded_by": "alice",
+          "uploaded_at": "2026-11-18 19:43:32",
+          "version": 1,
+          "downloads": 7
+        },
+        {
+          "name": "func_1MB.bin",
+          "size": 1048576,
+          "sha256": "91d12f6e7da9da296d412053344f98a58ad30b9173b2925e0848fe6bc2d6200f",
+          "owner": "alice",
+          "uploaded_by": "alice",
+          "uploaded_at": "2026-11-18 19:58:41",
+          "version": 1,
+          "downloads": 0
+        }
+      ],
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.293,
+      "host": "h2"
+    }
+  },
+  {
+    "test": "info has sha256 metadata",
+    "passed": true,
+    "result": {
+      "ok": true,
+      "command": "info",
+      "client": "10.0.0.2",
+      "user": "bob",
+      "name": "func_1MB.bin",
+      "size": 1048576,
+      "sha256": "91d12f6e7da9da296d412053344f98a58ad30b9173b2925e0848fe6bc2d6200f",
+      "owner": "alice",
+      "uploaded_by": "alice",
+      "uploaded_at": "2026-11-18 19:58:41",
+      "version": 1,
+      "downloads": 0,
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.299,
+      "host": "h2"
+    }
+  },
+  {
+    "test": "download + SHA-256 verify (bob)",
+    "passed": true,
+    "result": {
+      "ok": true,
+      "command": "download",
+      "client": "10.0.0.2",
+      "user": "bob",
+      "op": "download",
+      "file": "func_1MB.bin",
+      "bytes": 1048576,
+      "start": 1795012123.1582284,
+      "end": 1795012128.082574,
+      "max_gap_s": 0.728,
+      "sha256_ok": true,
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 4.925,
+      "host": "h2"
+    }
+  },
+  {
+    "test": "readonly user cannot upload",
+    "passed": true,
+    "result": {
+      "ok": false,
+      "command": "upload",
+      "client": "10.0.0.1",
+      "user": "guest",
+      "error": "permission denied (readonly)",
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.362,
+      "host": "h1"
+    }
+  },
+  {
+    "test": "non-owner cannot delete",
+    "passed": true,
+    "result": {
+      "ok": false,
+      "command": "delete",
+      "client": "10.0.0.2",
+      "user": "bob",
+      "error": "permission denied: owned by alice",
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.355,
+      "host": "h2"
+    }
+  },
+  {
+    "test": "path traversal name rejected",
+    "passed": true,
+    "result": {
+      "ok": false,
+      "command": "upload",
+      "client": "10.0.0.1",
+      "user": "alice",
+      "error": "invalid file name",
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.365,
+      "host": "h1"
+    }
+  },
+  {
+    "test": "owner can delete",
+    "passed": true,
+    "result": {
+      "ok": true,
+      "command": "delete",
+      "client": "10.0.0.1",
+      "user": "alice",
+      "status": "OK",
+      "reconnects": 0,
+      "busy": 0,
+      "elapsed_s": 0.471,
+      "host": "h1"
+    }
+  }
+]

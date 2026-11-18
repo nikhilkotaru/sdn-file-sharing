@@ -1,0 +1,56 @@
+[
+  {
+    "scenario": "no_failure",
+    "rep": 0,
+    "ok": true,
+    "completion_s": 36.524,
+    "max_gap_s": 0.459,
+    "reconnects": 0,
+    "error": null
+  },
+  {
+    "scenario": "no_failure",
+    "rep": 1,
+    "ok": true,
+    "completion_s": 17.039,
+    "max_gap_s": 0.391,
+    "reconnects": 0,
+    "error": null
+  },
+  {
+    "scenario": "failover_on",
+    "rep": 0,
+    "ok": true,
+    "completion_s": 26.807,
+    "max_gap_s": 0.997,
+    "reconnects": 0,
+    "error": null
+  },
+  {
+    "scenario": "failover_on",
+    "rep": 1,
+    "ok": true,
+    "completion_s": 22.366,
+    "max_gap_s": 0.869,
+    "reconnects": 0,
+    "error": null
+  },
+  {
+    "scenario": "failover_off",
+    "rep": 0,
+    "ok": true,
+    "completion_s": 47.628,
+    "max_gap_s": 5.696,
+    "reconnects": 1,
+    "error": null
+  },
+  {
+    "scenario": "failover_off",
+    "rep": 1,
+    "ok": true,
+    "completion_s": 36.512,
+    "max_gap_s": 5.882,
+    "reconnects": 1,
+    "error": null
+  }
+]

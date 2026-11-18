@@ -1,0 +1,84 @@
+{
+  "checks": [
+    {
+      "check": "h5 (denied host) can ping server",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "h5 (denied host) reaches file service",
+      "observed": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "check": "h1 reaches file service",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "h1 reaches server port 22 (firewall)",
+      "observed": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "check": "brute force blocked by SDN after attempt #",
+      "observed": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "check": "blocked host h3 cannot log in even with valid password",
+      "observed": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "check": "other users (h1) unaffected",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "h3 works again after unblock",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "brute_force": [
+    {
+      "attempt": 1,
+      "t": 0.27,
+      "error": "authentication failed"
+    },
+    {
+      "attempt": 2,
+      "t": 1.06,
+      "error": "authentication failed"
+    },
+    {
+      "attempt": 3,
+      "t": 2.09,
+      "error": "authentication failed"
+    },
+    {
+      "attempt": 4,
+      "t": 5.82,
+      "error": "TimeoutError: timed out"
+    },
+    {
+      "attempt": 5,
+      "t": 9.5,
+      "error": "TimeoutError: timed out"
+    },
+    {
+      "attempt": 6,
+      "t": 13.22,
+      "error": "TimeoutError: timed out"
+    }
+  ]
+}

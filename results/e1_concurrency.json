@@ -1,0 +1,353 @@
+[
+  {
+    "n": 1,
+    "ok": 1,
+    "aggregate_mbps": 3.008,
+    "avg_completion_s": 13.945,
+    "max_completion_s": 13.945,
+    "per_client_mbps": [
+      3.008
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "clients": 1,
+    "rep": 0,
+    "paths": {
+      "s1-s2-s4": 1
+    }
+  },
+  {
+    "n": 1,
+    "ok": 1,
+    "aggregate_mbps": 3.341,
+    "avg_completion_s": 12.555,
+    "max_completion_s": 12.555,
+    "per_client_mbps": [
+      3.341
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "clients": 1,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 1
+    }
+  },
+  {
+    "n": 2,
+    "ok": 2,
+    "aggregate_mbps": 3.427,
+    "avg_completion_s": 23.136,
+    "max_completion_s": 24.479,
+    "per_client_mbps": [
+      1.713,
+      1.925
+    ],
+    "jain_fairness": 0.997,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "clients": 2,
+    "rep": 0,
+    "paths": {
+      "s1-s2-s4": 2
+    }
+  },
+  {
+    "n": 2,
+    "ok": 2,
+    "aggregate_mbps": 1.585,
+    "avg_completion_s": 52.9,
+    "max_completion_s": 52.93,
+    "per_client_mbps": [
+      0.792,
+      0.793
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "clients": 2,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 2
+    }
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 2.628,
+    "avg_completion_s": 48.845,
+    "max_completion_s": 63.679,
+    "per_client_mbps": [
+      0.659,
+      1.541,
+      0.757,
+      0.855
+    ],
+    "jain_fairness": 0.883,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "clients": 4,
+    "rep": 0,
+    "paths": {
+      "s1-s2-s4": 4
+    }
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 1.531,
+    "avg_completion_s": 101.947,
+    "max_completion_s": 109.566,
+    "per_client_mbps": [
+      0.386,
+      0.503,
+      0.383,
+      0.394
+    ],
+    "jain_fairness": 0.986,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "clients": 4,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 4
+    }
+  },
+  {
+    "n": 8,
+    "ok": 8,
+    "aggregate_mbps": 2.236,
+    "avg_completion_s": 119.092,
+    "max_completion_s": 149.848,
+    "per_client_mbps": [
+      0.374,
+      0.287,
+      0.378,
+      0.372,
+      0.28,
+      0.295,
+      0.619,
+      0.378
+    ],
+    "jain_fairness": 0.931,
+    "reconnects": 3,
+    "busy": 0,
+    "mode": "static",
+    "clients": 8,
+    "rep": 0,
+    "paths": {
+      "s1-s2-s4": 1
+    }
+  },
+  {
+    "n": 8,
+    "ok": 8,
+    "aggregate_mbps": 2.031,
+    "avg_completion_s": 148.959,
+    "max_completion_s": 165.132,
+    "per_client_mbps": [
+      0.258,
+      0.273,
+      0.269,
+      0.254,
+      0.269,
+      0.275,
+      0.305,
+      0.389
+    ],
+    "jain_fairness": 0.98,
+    "reconnects": 7,
+    "busy": 0,
+    "mode": "static",
+    "clients": 8,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 8
+    }
+  },
+  {
+    "n": 1,
+    "ok": 1,
+    "aggregate_mbps": 3.149,
+    "avg_completion_s": 13.319,
+    "max_completion_s": 13.319,
+    "per_client_mbps": [
+      3.149
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 1,
+    "rep": 0,
+    "paths": {
+      "s1-s2-s4": 1
+    }
+  },
+  {
+    "n": 1,
+    "ok": 1,
+    "aggregate_mbps": 4.015,
+    "avg_completion_s": 10.447,
+    "max_completion_s": 10.447,
+    "per_client_mbps": [
+      4.015
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 1,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 1
+    }
+  },
+  {
+    "n": 2,
+    "ok": 2,
+    "aggregate_mbps": 10.505,
+    "avg_completion_s": 7.775,
+    "max_completion_s": 7.916,
+    "per_client_mbps": [
+      5.494,
+      5.299
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 2,
+    "rep": 0,
+    "paths": {
+      "s1-s2-s4": 1,
+      "s1-s3-s4": 1
+    }
+  },
+  {
+    "n": 2,
+    "ok": 2,
+    "aggregate_mbps": 13.449,
+    "avg_completion_s": 6.192,
+    "max_completion_s": 6.231,
+    "per_client_mbps": [
+      6.732,
+      6.816
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 2,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 1,
+      "s1-s3-s4": 1
+    }
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 8.748,
+    "avg_completion_s": 16.131,
+    "max_completion_s": 19.16,
+    "per_client_mbps": [
+      2.202,
+      2.999,
+      2.189,
+      3.401
+    ],
+    "jain_fairness": 0.964,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 4,
+    "rep": 0,
+    "paths": {
+      "s1-s2-s4": 2,
+      "s1-s3-s4": 2
+    }
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 11.009,
+    "avg_completion_s": 14.805,
+    "max_completion_s": 15.175,
+    "per_client_mbps": [
+      3.022,
+      2.764,
+      2.785,
+      2.777
+    ],
+    "jain_fairness": 0.999,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 4,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 2,
+      "s1-s3-s4": 2
+    }
+  },
+  {
+    "n": 8,
+    "ok": 8,
+    "aggregate_mbps": 8.909,
+    "avg_completion_s": 30.57,
+    "max_completion_s": 37.396,
+    "per_client_mbps": [
+      3.327,
+      1.155,
+      2.394,
+      1.122,
+      1.272,
+      1.203,
+      1.164,
+      1.138
+    ],
+    "jain_fairness": 0.813,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 8,
+    "rep": 0,
+    "paths": {}
+  },
+  {
+    "n": 8,
+    "ok": 8,
+    "aggregate_mbps": 5.357,
+    "avg_completion_s": 55.063,
+    "max_completion_s": 62.61,
+    "per_client_mbps": [
+      0.824,
+      0.682,
+      0.67,
+      0.772,
+      0.815,
+      0.787,
+      0.797,
+      0.779
+    ],
+    "jain_fairness": 0.995,
+    "reconnects": 2,
+    "busy": 0,
+    "mode": "dynamic",
+    "clients": 8,
+    "rep": 1,
+    "paths": {
+      "s1-s2-s4": 4,
+      "s1-s3-s4": 4
+    }
+  }
+]

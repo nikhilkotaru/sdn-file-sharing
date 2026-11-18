@@ -1,0 +1,242 @@
+[
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 4.14,
+    "avg_completion_s": 38.42,
+    "max_completion_s": 40.359,
+    "per_client_mbps": [
+      1.17,
+      1.039,
+      1.101,
+      1.065
+    ],
+    "jain_fairness": 0.998,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "loss_pct": 0,
+    "clients": 4,
+    "rep": 0
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 2.981,
+    "avg_completion_s": 54.263,
+    "max_completion_s": 56.257,
+    "per_client_mbps": [
+      0.824,
+      0.78,
+      0.747,
+      0.746
+    ],
+    "jain_fairness": 0.998,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "loss_pct": 0,
+    "clients": 4,
+    "rep": 1
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 11.108,
+    "avg_completion_s": 14.461,
+    "max_completion_s": 14.98,
+    "per_client_mbps": [
+      3.065,
+      2.913,
+      2.8,
+      2.837
+    ],
+    "jain_fairness": 0.999,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "loss_pct": 0,
+    "clients": 4,
+    "rep": 0
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 8.518,
+    "avg_completion_s": 15.081,
+    "max_completion_s": 19.567,
+    "per_client_mbps": [
+      4.36,
+      2.144,
+      3.379,
+      2.24
+    ],
+    "jain_fairness": 0.918,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "loss_pct": 0,
+    "clients": 4,
+    "rep": 1
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 1.858,
+    "avg_completion_s": 88.058,
+    "max_completion_s": 90.142,
+    "per_client_mbps": [
+      0.467,
+      0.465,
+      0.509,
+      0.467
+    ],
+    "jain_fairness": 0.999,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "loss_pct": 1,
+    "clients": 4,
+    "rep": 0
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 1.803,
+    "avg_completion_s": 90.307,
+    "max_completion_s": 93.008,
+    "per_client_mbps": [
+      0.452,
+      0.509,
+      0.451,
+      0.451
+    ],
+    "jain_fairness": 0.997,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "loss_pct": 1,
+    "clients": 4,
+    "rep": 1
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 7.554,
+    "avg_completion_s": 20.599,
+    "max_completion_s": 22.091,
+    "per_client_mbps": [
+      2.266,
+      2.023,
+      1.899,
+      1.991
+    ],
+    "jain_fairness": 0.996,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "loss_pct": 1,
+    "clients": 4,
+    "rep": 0
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 10.019,
+    "avg_completion_s": 15.485,
+    "max_completion_s": 16.745,
+    "per_client_mbps": [
+      2.748,
+      2.674,
+      2.505,
+      2.943
+    ],
+    "jain_fairness": 0.997,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "loss_pct": 1,
+    "clients": 4,
+    "rep": 1
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 1.752,
+    "avg_completion_s": 93.073,
+    "max_completion_s": 95.601,
+    "per_client_mbps": [
+      0.46,
+      0.456,
+      0.448,
+      0.439
+    ],
+    "jain_fairness": 1.0,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "loss_pct": 3,
+    "clients": 4,
+    "rep": 0
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 1.625,
+    "avg_completion_s": 92.251,
+    "max_completion_s": 103.121,
+    "per_client_mbps": [
+      0.508,
+      0.457,
+      0.407,
+      0.458
+    ],
+    "jain_fairness": 0.994,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "static",
+    "loss_pct": 3,
+    "clients": 4,
+    "rep": 1
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 4.059,
+    "avg_completion_s": 33.436,
+    "max_completion_s": 41.254,
+    "per_client_mbps": [
+      1.298,
+      1.017,
+      1.47,
+      1.326
+    ],
+    "jain_fairness": 0.984,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "loss_pct": 3,
+    "clients": 4,
+    "rep": 0
+  },
+  {
+    "n": 4,
+    "ok": 4,
+    "aggregate_mbps": 5.513,
+    "avg_completion_s": 27.128,
+    "max_completion_s": 30.267,
+    "per_client_mbps": [
+      1.666,
+      1.462,
+      1.386,
+      1.721
+    ],
+    "jain_fairness": 0.992,
+    "reconnects": 0,
+    "busy": 0,
+    "mode": "dynamic",
+    "loss_pct": 3,
+    "clients": 4,
+    "rep": 1
+  }
+]
