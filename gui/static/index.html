@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDN File Sharing Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="6" cy="16" r="4"/><circle cx="26" cy="16" r="4"/>
+      <path d="M10 16 C14 6, 18 6, 22 16" class="pa"/><path d="M10 16 C14 26, 18 26, 22 16" class="pb"/>
+    </svg>
+    <div>
+      <h1>SDN File Sharing Console</h1>
+      <p class="sub">Concurrent TCP file sharing over a Mininet network with an os-ken controller</p>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" class="tab active" data-view="demo">Demo</button>
+    <button role="tab" class="tab" data-view="arch">Architecture</button>
+    <button role="tab" class="tab" data-view="results">Results</button>
+  </nav>
+  <div class="status" id="status">
+    <span class="pill" id="st-ctrl"><i></i>Controller</span>
+    <span class="pill" id="st-sw"><i></i>Switches</span>
+    <div class="seg" id="mode-seg" title="Routing mode">
+      <button data-mode="static">Static</button><button data-mode="dynamic">Dynamic</button>
+    </div>
+    <label class="switch" title="Re-route live connections when a link fails">
+      <input type="checkbox" id="failover"><span></span>Failover
+    </label>
+    <button class="btn primary" id="run-all">Run all checks</button>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- ======================= DEMO VIEW ======================= -->
+  <section class="view" id="view-demo">
+    <aside class="rubric" id="rubric" aria-label="Rubric components"></aside>
+    <div class="stage" id="stage"></div>
+  </section>
+
+  <!-- ======================= ARCHITECTURE ======================= -->
+  <section class="view hidden" id="view-arch">
+    <div class="doc">
+      <h2>How the system fits together</h2>
+      <p class="lede">Clients on <b>h1–h5</b> talk to a file server on <b>srv</b> over raw TCP sockets.
+        Between them are four Open vSwitch switches that know nothing on their own: every forwarding
+        decision is made by the SDN controller and pushed to the switches as OpenFlow rules.
+        The file server also reports application events to the controller, so logins and transfers
+        change how the network behaves.</p>
+
+      <div class="arch-grid">
+        <figure class="arch-map" id="arch-map"></figure>
+        <div>
+          <h3>Components</h3>
+          <table class="tbl">
+            <tr><th>Part</th><th>File</th><th>Role</th></tr>
+            <tr><td>Client</td><td><code>client/client.py</code></td><td>Login, upload, download with resume, SHA-256 check, retry with backoff</td></tr>
+            <tr><td>File server</td><td><code>server/file_server.py</code></td><td>Thread per connection, session limit, roles, reports events to the controller</td></tr>
+            <tr><td>Protocol</td><td><code>common/protocol.py</code></td><td>4-byte length + JSON message, then the raw file bytes</td></tr>
+            <tr><td>Controller</td><td><code>controller/sdn_controller.py</code></td><td>Paths, load balancing, failover, firewall, access policy, blocking, monitoring</td></tr>
+            <tr><td>Routing</td><td><code>controller/routing.py</code></td><td>Static baseline vs least-loaded dynamic path choice</td></tr>
+            <tr><td>Topology</td><td><code>topology/topo.py</code></td><td>Mininet network, 10 Mbps / 2 ms core links</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <h3>What the controller does with a new connection</h3>
+      <ol class="steps">
+        <li>The switch has no matching rule, so it sends the first packet to the controller (packet-in).</li>
+        <li>Is the source host blocked for brute force? Drop it at its switch.</li>
+        <li>Is it a server port other than 5000? Firewall drop.</li>
+        <li>Is the source a denied host in <code>config/policy.json</code>? Policy drop.</li>
+        <li>Otherwise pick a path (static: always s1-s2-s4; dynamic: least loaded) and install a rule for this exact connection on every switch along it, in both directions.</li>
+        <li>When the server reports <i>transfer_start</i>, re-balance; when a port goes down, move every connection on that link.</li>
+      </ol>
+
+      <h3>Message format</h3>
+      <pre class="code">[ 4-byte big-endian length ][ UTF-8 JSON ]           then, for UPLOAD / DOWNLOAD, exactly "size" raw bytes
+
+AUTH     {"op":"AUTH","user":"alice","password":"..."}      -> {"status":"OK","role":"user"}
+UPLOAD   {"op":"UPLOAD","name","size","sha256"}            -> {"status":"READY"} &lt;bytes&gt; {"status":"OK"}
+DOWNLOAD {"op":"DOWNLOAD","name","offset"}                 -> {"status":"OK","size","sha256","length"} &lt;bytes&gt;
+overload                                                   -> {"status":"BUSY","retry_after":1.0}</pre>
+
+      <h3>OpenFlow rule priorities</h3>
+      <table class="tbl narrow">
+        <tr><th>Priority</th><th>Rule</th><th>Why it sits there</th></tr>
+        <tr><td>300</td><td>Block host</td><td>Brute-force block must beat everything, including live connections</td></tr>
+        <tr><td>250</td><td>ACL drop</td><td>Firewall and access policy</td></tr>
+        <tr><td>100</td><td>Per-connection path</td><td>One rule per TCP connection, so each can take its own path</td></tr>
+        <tr><td>50</td><td>Host pair</td><td>Ping and other traffic; to the server it matches ICMP only</td></tr>
+        <tr><td>0</td><td>Table miss</td><td>Anything unknown goes to the controller</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ======================= RESULTS ======================= -->
+  <section class="view hidden" id="view-results">
+    <div class="doc" id="results-doc"><p class="muted">Loading results…</p></div>
+  </section>
+
+  <!-- ======================= LIVE NETWORK (always visible) ======================= -->
+  <aside class="live" id="live" aria-label="Live network">
+    <div class="live-head">
+      <h2>Live network</h2>
+      <span class="hint">Click a core link to cut it</span>
+    </div>
+    <div id="topo"></div>
+    <div class="legend">
+      <span><i class="sw pa"></i>Path A s1-s2-s4</span>
+      <span><i class="sw pb"></i>Path B s1-s3-s4</span>
+    </div>
+    <h3>Connections</h3>
+    <ul class="conns" id="conns"><li class="muted">No open connections</li></ul>
+    <h3>Blocked hosts</h3>
+    <div id="blocked" class="muted">None</div>
+    <h3>Controller events</h3>
+    <ul class="events" id="events"></ul>
+  </aside>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
